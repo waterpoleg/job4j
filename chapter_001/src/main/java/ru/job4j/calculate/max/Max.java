@@ -1,9 +1,5 @@
-package ru.job4j.calculate.Max;
+package ru.job4j.calculate.max;
 
-/**
- * @author Олег
- * @since 2018
- */
 public class Max {
 
     public int max(int first, int second) {
