@@ -9,13 +9,13 @@ public class Factorial {
 
     /**
      * метод расчтывает и возвращает факториал для передаваемого параметра - n
+     * инициализируем сразу с минимальным значением = 1, тк даже при n = 0 факториал равен 1
      **/
     public int calc(int n) {
-        //инициализируем сразу с минимальным значением = 1, тк даже при n = 0 факториал равен 1
-        int calculatedFactorial = 1;
+        int factorial = 1;
         for (int i = 1; i <= n; i++) {
-            calculatedFactorial *= i;
+            factorial *= i;
         }
-        return calculatedFactorial;
+        return factorial;
     }
 }
