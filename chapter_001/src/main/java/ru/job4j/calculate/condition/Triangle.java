@@ -16,7 +16,7 @@ public class Triangle {
      * то треугольник построить можно.
      */
     private boolean isTriangleExist(double ac, double ab, double bc) {
-        return (ab + bc) > ac & (ab + ac) > bc & (ac + bc) > ab;
+        return (ab + bc) > ac && (ab + ac) > bc && (ac + bc) > ab;
     }
 
     /**
