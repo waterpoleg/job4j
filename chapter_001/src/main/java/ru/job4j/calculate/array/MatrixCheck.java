@@ -10,8 +10,8 @@ public class MatrixCheck {
      */
     public boolean mono(boolean[][] data) {
         boolean result = true;
-        for (int index = 0; result && index != data[0].length - 1; index++) {
-            result = data[index][index] == data[index + 1][index + 1];
+        for (int i = 0; result && i != data[0].length - 1; i++) {
+            result = (data[i][i] == data[i + 1][i + 1]) && (data[i][data.length - 1 - i] == data[data.length - 1 - i][i]);
         }
         return result;
     }
