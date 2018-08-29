@@ -3,7 +3,6 @@ package ru.job4j.calculate.array;
 import java.util.Arrays;
 
 public class ArrayDuplicate {
-
     /**
      * Метод удаляет дубликаты в массиве строк.
      * @param array исходный массив

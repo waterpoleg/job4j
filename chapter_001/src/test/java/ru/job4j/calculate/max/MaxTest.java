@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
  *@since 2018
  */
 public class MaxTest {
-
     /**
      * тестируем при условии что первое число больше второго
      */

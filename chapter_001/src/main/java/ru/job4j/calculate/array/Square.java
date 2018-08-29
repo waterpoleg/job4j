@@ -1,7 +1,6 @@
 package ru.job4j.calculate.array;
 
 public class Square {
-
     /**
      * Метод заполняет массив числами от 1 до bound (включительно)
      *

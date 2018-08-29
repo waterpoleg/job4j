@@ -5,7 +5,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class FindLoopTest {
-
     /**
      * ищем 9, которая стоит во 2 ячейке массива
      */

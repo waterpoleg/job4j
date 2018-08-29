@@ -1,12 +1,9 @@
 package ru.job4j.calculate.condition;
-
 /**
  *@author Oleg
  *@since 2018
  */
-
 public class Point {
-
     private int x;
     private int y;
 

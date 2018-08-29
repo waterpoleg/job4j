@@ -1,5 +1,4 @@
 package ru.job4j.calculate.converter;
-
 /**
  * Корвертор валюты.
  */
@@ -17,7 +16,6 @@ public class Converter {
      * @param value рубли.
      * @return Евро.
      */
-
     public double rubleToEuro(double value) {
         return Math.round(value / EUR * 100d) / 100d;
     }

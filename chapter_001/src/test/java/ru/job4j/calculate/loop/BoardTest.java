@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
  */
 
 public class BoardTest {
-
     @Test
     public void when3x3() {
         Board board = new Board();

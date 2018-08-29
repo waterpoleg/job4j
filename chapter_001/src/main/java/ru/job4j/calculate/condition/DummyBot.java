@@ -1,5 +1,4 @@
 package ru.job4j.calculate.condition;
-
 /**
  *@author Олег
  *@version 07.2018

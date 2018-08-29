@@ -1,11 +1,9 @@
 package ru.job4j.calculate.loop;
-
 /**
  * @author Олег
  * @since 07.2018
  */
 public class Counter {
-
     /**
      * @param start
      * @param finish

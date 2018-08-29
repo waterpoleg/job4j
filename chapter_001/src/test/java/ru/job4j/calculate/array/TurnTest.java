@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
  */
 
 public class TurnTest {
-
     /**
      * четное число элементов в массиве
      */

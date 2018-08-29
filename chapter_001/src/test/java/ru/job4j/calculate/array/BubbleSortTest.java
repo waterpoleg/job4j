@@ -5,7 +5,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class BubbleSortTest {
-
     @Test
     public void whenSortByBubbleThenSortedArray() {
         BubbleSort array = new BubbleSort();

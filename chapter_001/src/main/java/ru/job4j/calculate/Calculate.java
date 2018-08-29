@@ -8,7 +8,6 @@ package ru.job4j.calculate;
 */
 
 public class Calculate {
-
     /**
     * Main method to print string with new line option
     * @param args

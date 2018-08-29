@@ -5,7 +5,6 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class MatrixTest {
-
     @Test
     public void when2ThenMatrix2x2() {
         Matrix array = new Matrix();
