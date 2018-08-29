@@ -5,6 +5,11 @@ public class Doctor extends Profession {
         super(profession, name);
     }
 
-    public void heal(Patient patient) {
+    /**
+     * Метод диагностики заболевания Patient
+     * (возвращает null - "заглушка", тк нет реализации в классе Diagnosis)
+     */
+    public Diagnosis heal(Patient patient) {
+        return null;
     }
 }

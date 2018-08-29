@@ -8,4 +8,12 @@ public class Profession {
         this.profession = profession;
         this.name = name;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getProfession() {
+        return this.profession;
+    }
 }

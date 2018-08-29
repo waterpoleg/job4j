@@ -5,6 +5,11 @@ public class Engineer extends Profession {
         super(profession, name);
     }
 
-    public void build(House house) {
+    /**
+     * метод строительства дома Engineer-ом
+     * (метод врзвращает null как заглушку, тк в классе Building нет реализации)
+     */
+    public Building build(House house) {
+        return null;
     }
 }

@@ -5,6 +5,11 @@ public class Teacher extends Profession {
         super(profession, name);
     }
 
-    public void teach(Student student) {
+    /**
+     * метод "экзаминации" Teacher-ом Student-а
+     * (возвращает null - заглушка, тк в классе Exam нет реализации)
+     */
+    public Exam teach(Student student) {
+        return null;
     }
 }
