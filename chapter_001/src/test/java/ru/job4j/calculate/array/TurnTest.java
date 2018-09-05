@@ -26,7 +26,7 @@ public class TurnTest {
      * нечетное число элементов
      */
     @Test
-    public void whenTrunOddArrayThenBackwardArray() {
+    public void whenTurnOddArrayThenBackwardArray() {
         Turn array = new Turn();
         int[] data = {1, 2, 3, 4, 5};
         int[] resultArray = array.back(data);
