@@ -26,39 +26,34 @@ public class Tracker {
      * изменения в заявке
      */
     public void replace(String id, Item item) {
-        Item findItem = this.findById(id);
-        findItem.setName(item.name);
-        findItem.setDescription(item.description);
-        findItem.setCreated(item.created);
+        item.setId(id);
+        for (int i = 0; i < this.position; i++) {
+            if (items[i].getId().equals(item.getId())) {
+                items[i].setName(item.getName());
+                items[i].setDescription(item.getDescription());
+                items[i].setCreated(item.getCreated());
+            }
+        }
     }
     /**
      * удаление заявок
      * */
     public void delete(String id) {
         Item item2delete = findById(id);
-        int i;
-        for (i = 0; i != this.position; i++) {
+        for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(item2delete.getId())) {
                 items[i] = null;
+                System.arraycopy(items, i + 1, items, i, position);
+                this.position--;
                 break;
             }
         }
-        System.arraycopy(items, i + 1, items, i, position);
-        this.position--;
     }
     /**
      * получение списка всех заявок
      * */
     public Item[] getAll() {
-        Item[] result = new Item[this.position];
-        int j = 0;
-        for (int i = 0; i != this.position; i++) {
-            if (this.items[i] != null) {
-                result[j] = this.items[i];
-                j++;
-            }
-        }
-        return result;
+        return Arrays.copyOf(this.items, this.position);
     }
     /**
      * получение списка по имени

@@ -1,10 +1,10 @@
 package ru.job4j.tracker;
 
 public class Item {
-    public String id;
-    public String name;
-    public String description;
-    public long created;
+    private String id;
+    private String name;
+    private String description;
+    private long created;
 
     public Item(String id, String name, String desc, long create) {
         this.id = id;
