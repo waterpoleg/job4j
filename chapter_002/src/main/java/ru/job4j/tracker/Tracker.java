@@ -26,12 +26,11 @@ public class Tracker {
      * изменения в заявке
      */
     public void replace(String id, Item item) {
-        item.setId(id);
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(item.getId())) {
-                items[i].setName(item.getName());
-                items[i].setDescription(item.getDescription());
-                items[i].setCreated(item.getCreated());
+                item.setId(id);
+                items[i] = item;
+                break;
             }
         }
     }
@@ -43,7 +42,7 @@ public class Tracker {
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(item2delete.getId())) {
                 items[i] = null;
-                System.arraycopy(items, i + 1, items, i, position);
+                System.arraycopy(items, i + 1, items, i, this.items.length - i - 1);
                 this.position--;
                 break;
             }
