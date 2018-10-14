@@ -27,9 +27,9 @@ public class Tracker {
      */
     public void replace(String id, Item item) {
         for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(item.getId())) {
-                item.setId(id);
+            if (items[i].getId().equals(findById(id).getId())) {
                 items[i] = item;
+                item.setId(id);
                 break;
             }
         }
