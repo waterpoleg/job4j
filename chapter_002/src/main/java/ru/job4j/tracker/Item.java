@@ -44,4 +44,14 @@ public class Item {
     public void setCreated(long created) {
         this.created = created;
     }
+
+    @Override
+    public String toString() {
+        return "id: "
+                + id
+                + ", name: "
+                + name
+                + ", description: "
+                + description;
+    }
 }

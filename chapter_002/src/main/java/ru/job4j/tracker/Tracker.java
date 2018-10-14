@@ -37,16 +37,19 @@ public class Tracker {
     /**
      * удаление заявок
      * */
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         Item item2delete = findById(id);
         for (int i = 0; i < this.position; i++) {
             if (items[i].getId().equals(item2delete.getId())) {
                 items[i] = null;
                 System.arraycopy(items, i + 1, items, i, this.items.length - i - 1);
                 this.position--;
+                result = true;
                 break;
             }
         }
+        return result;
     }
     /**
      * получение списка всех заявок

@@ -86,7 +86,7 @@ public class StartUI {
         System.out.println("------------ Заявки существующие в системе: --------------");
         Item[] items = this.tracker.getAll();
         for (Item item: items) {
-            System.out.println("id: " + item.getId() + ", name: " + item.getName() + ", description: " + item.getDescription());
+            System.out.println(item);
         }
         System.out.println("------------ Завершение вывода всех заявок --------------");
     }
@@ -107,8 +107,7 @@ public class StartUI {
     private void deleteItem() {
         System.out.println("------------ Удаление заявки: --------------");
         String id = this.input.ask("Введите id заявки, которую следует удалить: ");
-        if (this.tracker.findById(id) != null) {
-            this.tracker.delete(id);
+        if (this.tracker.delete(id)) {
             System.out.println("------------ Заявка " + id + " удалена --------------");
         } else {
             System.out.println("--------- Такого id в системе не существует -----------");
@@ -119,7 +118,7 @@ public class StartUI {
         String id = this.input.ask("Введите id: ");
         Item item = this.tracker.findById(id);
         if (item != null) {
-            System.out.println("id: " + item.getId() + ", name: " + item.getName() + ", description: " + item.getDescription());
+            System.out.println(item);
             System.out.println("------------ Заявка --------------");
         } else {
             System.out.println("--------- Такого id в системе не существует -----------");
@@ -130,9 +129,9 @@ public class StartUI {
         System.out.println("------------ Поик заявок по именем: --------------");
         String name = this.input.ask("Введите name заявки: ");
         Item[] items = this.tracker.findByName(name);
-        if (items != null) {
+        if (items.length != 0) {
             for (Item item : items) {
-                System.out.println("id: " + item.getId() + ", name: " + item.getName() + ", description: " + item.getDescription());
+                System.out.println(item);
             }
         } else {
             System.out.println("--------- Такого name в системе не существует -----------");
@@ -140,13 +139,13 @@ public class StartUI {
         System.out.println("------------ Завершение вывода заявок --------------");
     }
     private void showMenu() {
-        System.out.println("Меню:\n"
-                + "0 - Новая заявка\n"
-                + "1 - Показать все\n"
-                + "2 - Редактировать заявку\n"
-                + "3 - Удалить заявку\n"
-                + "4 - Поиск по id\n"
-                + "5 - Поиск по имени\n"
+        System.out.println("Меню:" + System.lineSeparator()
+                + "0 - Новая заявка" + System.lineSeparator()
+                + "1 - Показать все" + System.lineSeparator()
+                + "2 - Редактировать заявку" + System.lineSeparator()
+                + "3 - Удалить заявку" + System.lineSeparator()
+                + "4 - Поиск по id" + System.lineSeparator()
+                + "5 - Поиск по имени" + System.lineSeparator()
                 + "6 - Выход");
     }
     /**
