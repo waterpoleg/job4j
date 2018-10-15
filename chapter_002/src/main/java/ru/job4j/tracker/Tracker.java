@@ -27,7 +27,7 @@ public class Tracker {
      */
     public void replace(String id, Item item) {
         for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(findById(id).getId())) {
+            if (items[i].getId().equals(id)) { //findById(id).getId())) {
                 items[i] = item;
                 item.setId(id);
                 break;
@@ -39,9 +39,9 @@ public class Tracker {
      * */
     public boolean delete(String id) {
         boolean result = false;
-        Item item2delete = findById(id);
+        //Item item2delete = findById(id);
         for (int i = 0; i < this.position; i++) {
-            if (items[i].getId().equals(item2delete.getId())) {
+            if (items[i].getId().equals(id)) { //item2delete.getId())) {
                 items[i] = null;
                 System.arraycopy(items, i + 1, items, i, this.items.length - i - 1);
                 this.position--;
@@ -69,7 +69,7 @@ public class Tracker {
                 i++;
             }
         }
-        return i > 0 ? Arrays.copyOf(result, i) : null;
+        return Arrays.copyOf(result, i);
     }
     /**
      * получение заявки по id
