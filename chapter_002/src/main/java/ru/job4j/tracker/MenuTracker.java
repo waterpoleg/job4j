@@ -35,14 +35,14 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
     }
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions[0] = this.new AddItem();
         this.actions[1] = new MenuTracker.ShowAll();
         this.actions[2] = new EditItem();
         this.actions[3] = new MenuTracker.DeleteItem();
         this.actions[4] = new FindItemId();
         this.actions[5] = new FindItemName();
-        this.actions[6] = new Exit();
+        this.actions[6] = new Exit(ui);
     }
     /**
      * показать меню
@@ -163,10 +163,15 @@ public class MenuTracker {
         }
     }
     private class Exit implements UserAction {
+        private final StartUI ui;
+        Exit(StartUI ui) {
+            this.ui = ui;
+        }
         public int key() {
             return 6;
         }
         public void execute(Input input, Tracker tracker) {
+            this.ui.stop();
             //System.out.println("Tracker closed.");
         }
         public String info() {

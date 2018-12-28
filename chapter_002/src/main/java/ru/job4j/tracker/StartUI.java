@@ -9,6 +9,13 @@ public class StartUI {
      */
     private final Tracker tracker;
     /**
+     * Флаг завершения работы программы
+     * */
+    private boolean isExit = false;
+    public void stop() {
+        this.isExit = true;
+    }
+    /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      * @param tracker хранилище заявок.
@@ -22,13 +29,13 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
         int key;
         do {
             menu.showMenu();
             key = Integer.valueOf(input.ask("Выбор: "));
             menu.select(key);
-        } while (key != 6);
+        } while (!this.isExit);
     }
     /**
      * Запускт программы.
