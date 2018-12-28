@@ -15,10 +15,9 @@ public class ConsoleInput implements Input {
                 break;
             }
         }
-        if (exists) {
-            return key;
-        } else {
+        if (!exists) {
             throw new MenuOutException("Неправильный параметр.");
         }
+        return key;
     }
 }

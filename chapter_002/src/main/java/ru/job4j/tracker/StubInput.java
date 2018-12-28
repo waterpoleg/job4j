@@ -41,10 +41,9 @@ public class StubInput implements Input {
                 break;
             }
         }
-        if (exists) {
-            return key;
-        } else {
+        if (!exists) {
             throw new MenuOutException("Неправильный параметр.");
         }
+        return key;
     }
 }
