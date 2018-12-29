@@ -7,9 +7,9 @@ package ru.job4j.tracker;
 /**
  * внешний класс редактировние элемента
  * */
-class EditItem implements UserAction {
-    public int key() {
-        return 2;
+class EditItem extends BaseAction {
+    EditItem(int key, String name) {
+        super(key, name);
     }
     public void execute(Input input, Tracker tracker) {
         String id = input.ask("Please enter id: ");
@@ -23,26 +23,24 @@ class EditItem implements UserAction {
             System.out.println("Id does not exists. Please try again.");
         }
     }
-    public String info() {
-        return String.format("%s - %s", this.key(), "Редактировать заявку");
-    }
 }
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private UserAction[] actions = new UserAction[7];
+    private int menuPosition = 0;
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
     public void fillActions(StartUI ui) {
-        this.actions[0] = this.new AddItem();
-        this.actions[1] = new MenuTracker.ShowAll();
-        this.actions[2] = new EditItem();
-        this.actions[3] = new MenuTracker.DeleteItem();
-        this.actions[4] = new FindItemId();
-        this.actions[5] = new FindItemName();
-        this.actions[6] = new Exit(ui);
+        this.actions[menuPosition++] = this.new AddItem(0, "- Новая заявка");
+        this.actions[menuPosition++] = new MenuTracker.ShowAll(1, "- Показать все");
+        this.actions[menuPosition++] = new EditItem(2, "- Редактировать заявку");
+        this.actions[menuPosition++] = new MenuTracker.DeleteItem(3, "- Удалить заявку");
+        this.actions[menuPosition++] = new FindItemId(4, "- Поиск по id");
+        this.actions[menuPosition++] = new FindItemName(5, "- Поиск по имени");
+        this.actions[menuPosition++] = new Exit(6, "- Выход", ui);
     }
     /**
      * показать меню
@@ -61,25 +59,22 @@ public class MenuTracker {
     /**
      * добавление элемента
      * */
-    private class AddItem implements UserAction {
-        public int key() {
-            return 0;
+    private class AddItem extends BaseAction {
+        AddItem(int key, String name) {
+            super(key, name);
         }
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Please enter name: ");
             String desc = input.ask("Please enter description: ");
             tracker.add(new Item("id", name, desc, 123L));
         }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Новая заявка");
-        }
     }
     /**
      * статический класс Вывод всех элементов
      * */
-    private static class ShowAll implements UserAction {
-        public int key() {
-            return 1;
+    private static class ShowAll extends BaseAction {
+        ShowAll(int key, String name) {
+            super(key, name);
         }
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Заявки существующие в системе: --------------");
@@ -89,16 +84,13 @@ public class MenuTracker {
             }
             System.out.println("------------ Завершение вывода всех заявок --------------");
         }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Показать все");
-        }
     }
     /**
      * статический класс Удаление элемента
      * */
-    private static class DeleteItem implements UserAction {
-        public int key() {
-            return 3;
+    private static class DeleteItem extends BaseAction {
+        DeleteItem(int key, String name) {
+            super(key, name);
         }
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Please enter id: ");
@@ -110,16 +102,13 @@ public class MenuTracker {
                 System.out.println("Id does not exists. Please try again.");
             }
         }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Удалить заявку");
-        }
     }
     /**
      * Поиск по ID
      * */
-    private class FindItemId implements UserAction {
-        public int key() {
-            return 4;
+    private class FindItemId extends BaseAction {
+        FindItemId(int key, String name) {
+            super(key, name);
         }
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Please enter id: ");
@@ -132,16 +121,13 @@ public class MenuTracker {
                 System.out.println("Id does not exists. Please try again.");
             }
         }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Поиск по id");
-        }
     }
     /**
      * Посик по имени. Пеачтает все эелеенты, если они с одинаковым имененм
      * */
-    private class FindItemName implements UserAction {
-        public int key() {
-            return 5;
+    private class FindItemName extends BaseAction {
+        FindItemName(int key, String name) {
+            super(key, name);
         }
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Please enter Item Name: ");
@@ -158,24 +144,15 @@ public class MenuTracker {
                 System.out.println("Nothing was found.");
             }
         }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Поиск по имени");
-        }
     }
-    private class Exit implements UserAction {
-        private final StartUI ui;
-        Exit(StartUI ui) {
+    private class Exit extends BaseAction {
+        Exit(int key, String name, StartUI ui) {
+            super(key, name);
             this.ui = ui;
         }
-        public int key() {
-            return 6;
-        }
+        private final StartUI ui;
         public void execute(Input input, Tracker tracker) {
             this.ui.stop();
-            //System.out.println("Tracker closed.");
-        }
-        public String info() {
-            return String.format("%s - %s", this.key(), "Выход");
         }
     }
 }
